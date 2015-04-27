@@ -1,0 +1,27 @@
+<?=$this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <style test="text/css">
+    body {
+      background-color: red; 
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<form action="/gateway/pgaction" method="POST">
+  <h1>Payment Gateway Provider test interface</h1>
+  You can now finalize your test payment
+  <p>
+    You want to send us <b><?=$this->amount?></b> by <b><?=$this->description?></b><br/> 
+    Your internal transaction id is <b><?=$this->pid?></b><br/> 
+    You're about to perform <b>success</b> action: <input type="text" name="success" value="true"/> 
+  <p>
+  <input type="hidden" name="STATUS_URL" value="<?=$this->status_url?>"/>
+  <input type="hidden" name="SUCCESS_URL" value="<?=$this->success_url?>"/>
+  <input type="hidden" name="ERROR_URL" value="<?=$this->error_url?>"/>
+  <input type="hidden" name="PID" value="<?=$this->pid?>"/>
+  <input type="submit" value="Finalize payment"/>
+</form>
+</body>
+</html>

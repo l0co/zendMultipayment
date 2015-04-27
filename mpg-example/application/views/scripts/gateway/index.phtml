@@ -1,0 +1,37 @@
+<form action="/gateway/start" method="POST" id="form-login">
+<div class="form">
+<h1>Multi Payment Gateway demo app</h1>
+<br/>
+<table width="100%">
+  <tr>
+    <td width="400">
+      <label>Amount you'd like to spend:</label>
+    </td><td>
+      <input class="text" type="text" name="amount" value="0.01"/>
+    </td>
+  </tr><tr>
+    <td>
+      <label>Expense description:</label>
+    </td><td>
+      <input class="text" type="text" name="description" value="To settle my nerves"/>
+    </td>
+  </tr><tr>
+    <td>
+      <label>Choose right method:</label><br/>
+      <small style="color:gray"><i>More payment gateways will appear here after registering gateway classes and configure them in application.ini.</i></small>
+    </td><td>
+      <select name="method">
+        <? foreach($this->payments->getAll() as $name => $payment) : ?>
+          <option value="<?=$name?>"><?=$payment->getDisplayName()?></option>
+        <? endforeach; ?>
+      </select>
+    </td>
+  </tr>
+</table>
+<br/>
+<input type="submit" value="Pay"/>
+</div>
+</form>
+<br/>
+<br/>
+<small>See some help at <a href="http://lifeinide.blogspot.com" target="_blank">lifeinide.blogspot.com</a>.</small>
